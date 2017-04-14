@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# colors for making things pretty
-C_RED="\033[0;31m"
-C_YELLOW="\033[0;33m"
-C_BLUE="\033[0;34m"
-C_END="\033[0;0m"
-
 # helper functions
 echo_run() {
   # NOTE: Cannot be used with functions that already have an "eval" inside of them
@@ -31,7 +25,7 @@ C_BLUE="\033[0;34m"
 C_END="\033[0;0m"
 
 docker_helper(){
-  printf "$C_YELLOW Welcome to the Dose docker_helper help menu. $C_END \n\n"
+  printf "$C_YELLOW Welcome to the docker_helper help menu. $C_END \n\n"
   printf "Available functions: \n"
 
   # Docker-Machine Helpers
