@@ -54,7 +54,7 @@ docker_helper(){
 
   printf "\t * dh_clean - Delete all stopped containers & untagged images \n"
   printf "\t * dh_clean_c - Delete all stopped containers \n"
-  printf "\t * dh_clean_i - Delete all untagged images \n"
+  printf "\t * dh_clean_u - Delete all untagged images \n"
 }
 
 # help aliases
