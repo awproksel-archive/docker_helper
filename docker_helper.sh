@@ -28,17 +28,6 @@ docker_helper(){
   printf "$C_YELLOW Welcome to the docker_helper help menu. $C_END \n\n"
   printf "Available functions: \n"
 
-  # Docker-Machine Helpers
-  printf "$C_YELLOW Docker-Machine Helpers $C_END \n"
-  printf "\t * dh_create_machine {machine name} - Creates a docker-machine named {machine name} and necessary flags/settings \n"
-  printf "\t\t example: $C_YELLOW dh_create_machine clowder $C_END - would create a docker-machine named \"clowder\" \n"
-
-  printf "\t * dh_switch {machine name} - Switches to a different active machine \n"
-  printf "\t\t example: $C_YELLOW dh_switch clowder $C_END - would activate the docker-machine named \"clowder\" \n"
-
-  printf "\t * dh_ssh_m {machine name} - SSH into a specific docker-machine \n"
-  printf "\t\t example: $C_YELLOW dh_ssh_m clowder $C_END - would ssh into the docker-machine named \"clowder\"  \n"
-
   # Misc. Utility Helpers
   printf "$C_YELLOW Misc. Utility & Cleanup Helpers $C_END \n"
 
@@ -60,19 +49,6 @@ docker_helper(){
 # help aliases
 dh() { docker_helper; }
 dh_help() { docker_helper; }
-
-# Docker-Machine Helpers
-dh_create_machine() {
-docker-machine create --driver virtualbox --virtualbox-memory "2048" $1
-}
-
-dh_switch() {
-eval $(docker-machine env $1)
-}
-
-dh_ssh_m() {
-echo_run docker-machine ssh $1
-}
 
 # Misc. Utility Helpers
 dh_sd_images() {
