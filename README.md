@@ -16,7 +16,7 @@ source ~/path/to/cloned/repo/docker_helper/docker_helper.sh
 
 ## functions
 
-You can view all available functions by typing `dh`, give gives you the following:
+You can view all available functions by typing `dh`
 
 All executed commands will print to the screen the complete command they are executing so you will know what command(s) are being sent to the docker daemon.  
 
