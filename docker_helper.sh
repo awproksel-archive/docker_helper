@@ -32,6 +32,7 @@ docker_helper(){
   printf "$C_YELLOW Misc. Utility & Cleanup Helpers $C_END \n"
 
   printf "\t * dh_ssh_c {container name} - SSH into a specific container on the active machine \n"
+  printf "\t * dh_busy_i {image name} - Start a container overriding the entry/cmd for debugging"
 
   printf "\t * dh_kill - Kill/Stop all running containers \n"
   printf "\t * dh_d_volumes - Destroy all docker volumes on your host system \n"
@@ -87,6 +88,10 @@ dh_clean_u(){
 
 dh_ssh_c() {
 docker exec -it $1 bash
+}
+
+dh_busy_i() {
+  docker run -d --entrypoint /bin/sh $1 -c "while true; do echo hello world; sleep 1; done"
 }
 
 # Combined funcs
