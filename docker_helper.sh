@@ -54,8 +54,8 @@ dh_help() { docker_helper; }
 # Misc. Utility Helpers
 dh_sd_images() {
   printf "$C_RED Deleting images with tag: $1 $C_END \n"
-  echo_no_run "docker images | grep $1 | awk '{print $3}' | xargs docker rmi"
-  docker images | grep $1 | awk '{print $3}' | xargs docker rmi
+  echo_no_run "docker images | grep $1 | awk '{print $3}' | xargs docker rmi -f"
+  docker images | grep $1 | awk '{print $3}' | xargs docker rmi -f
 }
 
 dh_sd_running() {
@@ -83,7 +83,7 @@ dh_clean_c(){
 
 dh_clean_u(){
   printf "$C_RED Deleting untagged images $C_END \n"
-  echo_run "docker images -q -f dangling=true | xargs docker rmi"
+  echo_run "docker images -q -f dangling=true | xargs docker rmi -f"
 }
 
 dh_ssh_c() {
@@ -112,5 +112,5 @@ dh_kill
 dh_clean_c
 dh_clean_u
 printf "$C_RED Deleting images $C_END \n"
-echo_run "docker images -q | xargs docker rmi"
+echo_run "docker images -q | xargs docker rmi -f"
 }
