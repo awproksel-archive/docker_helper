@@ -32,7 +32,7 @@ docker_helper(){
   printf "$C_YELLOW Misc. Utility & Cleanup Helpers $C_END \n"
 
   printf "\t * dh_ssh_c {container name} - SSH into a specific container on the active machine \n"
-  printf "\t * dh_busy_i {image name} - Start a container overriding the entry/cmd for debugging"
+  printf "\t * dh_busy_i {image name} - Start a container overriding the entry/cmd for debugging \n"
 
   printf "\t * dh_kill - Kill/Stop all running containers \n"
   printf "\t * dh_d_volumes - Destroy all docker volumes on your host system \n"
@@ -54,8 +54,8 @@ dh_help() { docker_helper; }
 # Misc. Utility Helpers
 dh_sd_images() {
   printf "$C_RED Deleting images with tag: $1 $C_END \n"
-  echo_no_run "docker images | grep $1 | awk '{print $3}' | xargs docker rmi"
-  docker images | grep $1 | awk '{print $3}' | xargs docker rmi
+  echo_no_run "docker images | grep $1 | awk '{print $3}' | xargs docker rmi -f"
+  docker images | grep $1 | awk '{print $3}' | xargs docker rmi -f
 }
 
 dh_sd_running() {
@@ -83,7 +83,7 @@ dh_clean_c(){
 
 dh_clean_u(){
   printf "$C_RED Deleting untagged images $C_END \n"
-  echo_run "docker images -q -f dangling=true | xargs docker rmi"
+  echo_run "docker images -q -f dangling=true | xargs docker rmi -f"
 }
 
 dh_ssh_c() {
