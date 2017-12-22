@@ -112,5 +112,5 @@ dh_kill
 dh_clean_c
 dh_clean_u
 printf "$C_RED Deleting images $C_END \n"
-echo_run "docker images -q | xargs docker rmi"
+echo_run "docker images -q | xargs docker rmi -f"
 }
