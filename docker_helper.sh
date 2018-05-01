@@ -33,6 +33,7 @@ docker_helper(){
 
   printf "\t * dh_ssh_c {container name} - SSH into a specific container on the active machine \n"
   printf "\t * dh_busy_i {image name} - Start a container overriding the entry/cmd for debugging \n"
+  printf "\t * dh_logs_c {container1_name} {container2_name} ... - Tails logs from each specified container \n"
 
   printf "\t * dh_kill - Kill/Stop all running containers \n"
   printf "\t * dh_d_volumes - Destroy all docker volumes on your host system \n"
@@ -113,4 +114,13 @@ dh_clean_c
 dh_clean_u
 printf "$C_RED Deleting images $C_END \n"
 echo_run "docker images -q | xargs docker rmi -f"
+}
+
+dh_logs_c() {
+  while [ $# -ne 0 ]
+  do
+      (docker logs -f -t --tail=10 $1|sed -e "s/^/$1: /")&
+      shift
+  done
+  wait
 }
