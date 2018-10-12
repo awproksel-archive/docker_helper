@@ -114,12 +114,14 @@ dh_clean_c
 dh_clean_u
 printf "$C_RED Deleting images $C_END \n"
 echo_run "docker images -q | xargs docker rmi -f"
+printf "$C_RED Deleting all volumes $C_END \n"
+dh_d_volumes
 }
 
 dh_logs_c() {
   while [ $# -ne 0 ]
   do
-      (docker logs -f -t --tail=10 $1|sed -e "s/^/$1: /")&
+      (docker logs -f -t --tail=100 $1|sed -e "s/^/$1: /")&
       shift
   done
   wait
